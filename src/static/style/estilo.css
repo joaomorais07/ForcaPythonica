@@ -1,0 +1,88 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.conteiner{
+    position: relative;
+    margin: auto;
+    display: flex;
+    height: 500px;
+    width: 800px;
+}
+
+.informacao{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    height: auto;
+    background-color:rgb(243, 94, 94);
+    
+}
+
+.formTeclado {
+    margin: auto 20px;
+    position: relative;
+    color: rgb(241, 218, 255);
+    text-align: left;
+    width: 100%;
+}
+
+.conteiner #message{
+    letter-spacing: 5px;
+}
+
+.alfabetica {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 10px;
+    max-width: 600px;
+    margin: auto;
+}
+
+.numerica {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 10px;
+    max-width: 600px;
+    margin-top: 10px;
+    margin: 10px auto;
+}
+.tecla {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: #f0f0f0;
+    border: 1px solid #b3b1b1;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+    border-radius: 5px;
+}
+.tecla:hover:not(.acertou, .errou) {
+    background-color: #a5a3a3;
+}
+
+.acertou {
+    background-color: green;
+    color: white;
+    cursor: default;
+    width: 48px;
+    height: 48px;
+    opacity: 80%;
+}
+.errou {
+    background-color: rgb(255, 0, 0);
+    color: white;
+    cursor: default;
+    width: 48px;
+    height: 48px;
+    opacity: 80%;
+}
