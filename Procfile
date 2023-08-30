@@ -1,1 +1,2 @@
-﻿web: gunicorn forca:app
+﻿# Modify this Procfile to fit your needs
+web: gunicorn forca:app
