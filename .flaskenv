@@ -1,3 +1,2 @@
-﻿export FLASK_APP=forca
+﻿FLASK_APP=forca
 FLASK_DEBUG=True
-NODE_VERSION=14.17.0
