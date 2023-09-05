@@ -5,7 +5,7 @@
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-image: url('/static/image/fundo2.png');
+    background-image: url('/static/image/background.png');
 }
 
 .conteiner{
