@@ -1,1 +1,1 @@
-﻿gunicorn forca:app
+﻿web: gunicorn forca:app

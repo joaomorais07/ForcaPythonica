@@ -1,5 +1,5 @@
 {
-  "fruta": [
+  "Fruta": [
     "Maçã",
     "Banana",
     "Laranja",
@@ -51,7 +51,7 @@
     "Rambutan",
     "Jambo"
   ],
-   "legume": [
+   "Legume": [
     "Cenoura",
     "Batata",
     "Brócolis",
@@ -103,7 +103,7 @@
     "Udo",
     "Vetiver"
   ],
-  "cidade": [
+  "Cidade": [
     "Nova-York",
     "Los-Angeles",
     "Chicago",
@@ -156,7 +156,7 @@
     "Dublin",
     "Viena"
   ],
-  "país": [
+  "País": [
     "Estados-Unidos",
     "Canadá",
     "Brasil",
@@ -209,7 +209,7 @@
     "Paraguai",
     "Bolívia"
   ],
-  "objeto": [
+  "Objeto": [
     "Livro",
     "Caneta",
     "Celular",
@@ -252,16 +252,6 @@
     "Cama",
     "Travesseiro",
     "Cobertor",
-    "Cachorro",
-    "Gato",
-    "Pássaro",
-    "Coelho",
-    "Peixe",
-    "Elefante",
-    "Leão",
-    "Girafa",
-    "Tigre",
-    "Cobra",
     "Computador",
     "Teclado",
     "Monitor",
@@ -309,7 +299,7 @@
     "Quadro",
     "Telefone"
   ],
-  "filme": [
+  "Filme": [
     "O-Poderoso-Chefão",
     "Cidadão-Kane",
     "Casablanca",
@@ -371,7 +361,7 @@
     "Homem-Formiga",
     "Doutor-Estranho"
   ],
-   "animal": [
+   "Animal": [
     "Cachorro",
     "Gato",
     "Elefante",
@@ -420,7 +410,7 @@
     "Flamingo",
     "Hipopótamo"
   ],
-  "profissão": [
+  "Profissão": [
     "Médico",
     "Professor",
     "Engenheiro",

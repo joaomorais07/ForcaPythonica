@@ -1,15 +1,27 @@
 ﻿body {
     font-family: Arial, sans-serif;
-    display: grid;
+    display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
+    background-image: url('/static/image/fundo2.png');
 }
 
 .conteiner{
     position: relative;
-    margin: auto;
+    margin: auto 50px auto auto;
+    display: flex;
+    background-color: #0000008f;
+}
+
+.resultado{
+   
+}
+
+.jogo{
+    position: relative;
+    margin: auto 50px auto auto;
     display: flex;
     height: 500px;
     width: 800px;
@@ -20,12 +32,57 @@
     width: 100%;
     text-align: center;
     height: auto;
-    background-color:rgb(243, 94, 94);
-    
+    color: #fffbfb;
+    margin-top: 50px;
+}
+label{
+    font-size: 20px;
+    font-weight: 600;
 }
 
+.select-container {
+    position: relative;
+}
+
+select {
+    background-color: #333; /* Cor de fundo escura */
+    border: 2px solid #444; /* Cor da borda */
+    padding: 10px 30px 10px 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    width: 180px;
+    outline: none;
+    cursor: pointer;
+    color: #fff; /* Cor do texto */
+}
+
+
+select:focus {
+    border-color: #b700ff;
+    box-shadow: 0 0 5px rgba(212, 0, 255, 0.5); /* Sombra quando em foco */
+    background-color: #444; /* Cor de fundo escura quando em foco */
+    color: #fff; /* Cor do texto quando em foco */
+    outline: none; /* Remove a borda de foco padrão */
+}
+
+.select-container select::selection {
+    background-color: #ff6600; /* Cor de fundo do item selecionado */
+    color: #fff; /* Cor do texto do item selecionado */
+}
+
+select::before {
+    content: "\25BC";
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #666;
+}
+
+
 .formTeclado {
-    margin: auto 20px;
+    margin: auto auto 20px;
     position: relative;
     color: rgb(241, 218, 255);
     text-align: left;
@@ -34,11 +91,35 @@
 
 .conteiner #message{
     letter-spacing: 5px;
+    margin-top: 30px;
 }
 
 .alfabetica {
     display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+    max-width: 600px;
+    margin: auto;
+}
+.primeiraLinha{
+    display: grid;
     grid-template-columns: repeat(10, 1fr);
+    gap: 10px;
+    max-width: 600px;
+    margin: auto;
+}
+
+.segundaLinha{
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 10px;
+    max-width: 600px;
+    margin: auto;
+}
+
+.terceiraLinha{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
     gap: 10px;
     max-width: 600px;
     margin: auto;
@@ -58,13 +139,14 @@
     align-items: center;
     width: 50px;
     height: 50px;
-    background-color: #f0f0f0;
-    border: 1px solid #b3b1b1;
+    background-color: #1f1f1f;
+    border: 1px solid #c9c6c6;
     font-size: 18px;
     font-weight: 600;
     cursor: pointer;
     user-select: none;
     border-radius: 5px;
+    color:#fffbfb ;
 }
 .tecla:hover:not(.acertou, .errou) {
     background-color: #a5a3a3;

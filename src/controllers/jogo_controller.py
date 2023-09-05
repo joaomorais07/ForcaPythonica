@@ -26,14 +26,17 @@ class forca (MethodView):
             return False
     
 
-    def sortearPalavra(self):
+    def sortearPalavra(self, opcaoSelecionada):
         file_path = os.path.join(app.static_folder, 'json', 'Palavras.json')
         with open(file_path, encoding="utf-8") as f:
             meuJson = json.load(f)
             dicas = list(map(lambda s: s.strip(), meuJson))
-        
-        dica = random.choice(dicas)
-        palavra = random.choice(meuJson[dica])
+        if opcaoSelecionada == 'Aleatorio':
+            dica = random.choice(dicas)
+        else:
+            dica = opcaoSelecionada
+            
+        palavra = random.choice(meuJson[dica]).upper()
      
         campo = palavra
 
@@ -87,7 +90,7 @@ class forca (MethodView):
             session['chute'] = 'errou'
             session['campo'] = campo
             
-            if session['erros'] > 6:
+            if session['erros'] >= 6:
                 session['fim'] = True
                 
                 session['partida'] = 'perdeu'

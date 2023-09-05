@@ -1,20 +1,30 @@
 ﻿from flask.views import MethodView
-from flask import render_template, redirect, request, jsonify, session
+from flask import render_template, request, jsonify, session
 from src.controllers.jogo_controller import forca
 
 class carregarIndex(MethodView):
     def get (self):
-        forca().sortearPalavra()
-        dica = session['dica'].upper()
+        forca().sortearPalavra('Aleatorio')
+        dica = session['dica']
         campo = session['campo']
-        return render_template('index.html', campo=campo, dica=dica)
+        opcaoSelecionada = 'Aleatorio'
+        erros = str(session['erros'])
+        return render_template('index.html', campo=campo, dica=dica, opcaoSelecionada=opcaoSelecionada, erros=erros)
+    
+    def post (self):
+        opcaoSelecionada = request.form['opcao']
+        if not opcaoSelecionada: 
+            opcaoSelecionada = 'Aleatorio'
+        forca().sortearPalavra(opcaoSelecionada)
+        dica = session['dica']
+        campo = session['campo']
+        erros = str(session['erros'])
+        return render_template('index.html', campo=campo, dica=dica, opcaoSelecionada=opcaoSelecionada, erros=erros)
      
     
 class escolher (MethodView):
     def get(self):
         escolha = request.args.get('tecla')
         forca().jogar(escolha)
-        print(session['erros'])
-        campo = session['campo'], session['chute'], session['partida'], session['erros'], session['palavra']
-
-        return jsonify({'message': campo})
+        resposta = session['campo'], session['chute'], session['partida'], session['palavra'], str(session['erros'])
+        return jsonify({'message': resposta})
