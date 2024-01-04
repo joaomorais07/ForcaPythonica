@@ -6,7 +6,6 @@
 
     // Obtém o valor da opção selecionada do Flask (substitua 'opcaoSelecionada' pelo valor real)
     var opcaoSelecionada = $("#opcao").data("opcao");
-    console.log(opcaoSelecionada);
 
     // Define a opção selecionada com base no valor recebido do Flask
     $("#opcao").val(opcaoSelecionada);
@@ -62,4 +61,95 @@
             $("#imagemErro").attr("src", urlImagem);
         });
     });
+});
+
+function leftClick() {
+    var btn = document.getElementById('btn');
+    btn.style.left = '0';
+
+    var texto = document.getElementById('btn1');
+    texto.style.color = '#ffffff';
+
+    var texto = document.getElementById('btn2');
+    texto.style.color = 'black';
+
+    var cronometro = document.getElementsByClassName('cronometro')[0];
+    cronometro.style.display = 'none';
+
+    var historico = document.getElementsByClassName('historico')[0];
+    historico.style.display = 'none';
+
+    var selectTema = document.getElementsByClassName('tema')[0];
+    selectTema.style.display = 'block';
+
+}
+
+function rightClick() {
+    var btn = document.getElementById('btn');
+    btn.style.left = '140px';
+
+    var texto = document.getElementById('btn2');
+    texto.style.color = '#ffffff';
+
+    var texto = document.getElementById('btn1');
+    texto.style.color = 'black';
+
+    var cronometro = document.getElementsByClassName('cronometro')[0];
+    cronometro.style.display = 'block';
+
+    var historico = document.getElementsByClassName('historico')[0];
+    historico.style.display = 'block';
+
+    var selectTema = document.getElementsByClassName('tema')[0];
+    selectTema.style.display = 'none';
+
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    var minutos = 1; // Defina o número de minutos desejados
+    var segundos = 1;
+    var intervalo;
+
+    function atualizarCronometro() {
+        if (minutos == 0 && segundos == 0) {
+            clearInterval(intervalo);
+            alert('Tempo esgotado!');
+            return;
+        }
+
+        if (segundos == 0) {
+            minutos--;
+            segundos = 59;
+        } else {
+            segundos--;
+        }
+
+        document.getElementById('minutos').textContent = minutos.toString().padStart(2, '0');
+        document.getElementById('segundos').textContent = segundos.toString().padStart(2, '0');
+    }
+
+    document.getElementById('iniciar').addEventListener('click', function () {
+        intervalo = setInterval(atualizarCronometro, 1000);
+    });
+
+    document.getElementById('pausar').addEventListener('click', function () {
+        clearInterval(intervalo);
+    });
+
+    document.getElementById('parar').addEventListener('click', function () {
+        clearInterval(intervalo);
+        minutos = 1; // Redefina o número de minutos desejados
+        segundos = 0;
+        atualizarCronometro();
+    });
+
+    document.getElementById('zerar').addEventListener('click', function () {
+        clearInterval(intervalo);
+        minutos = 1; // Redefina o número de minutos desejados
+        segundos = 0;
+        atualizarCronometro();
+    });
+
+    atualizarCronometro();
 });

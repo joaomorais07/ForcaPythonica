@@ -1,5 +1,5 @@
 ﻿from flask.views import MethodView
-from flask import render_template, redirect, request, url_for, jsonify, session
+from flask import session
 import random
 import colorama as colorama
 import json
@@ -55,6 +55,51 @@ class forca (MethodView):
         
         
     def jogar (self, escolha):
+        campo = session['campo']
+        palavra = session['palavra']
+
+        if forca().verificarLetraEmPalavra(escolha, palavra):
+            posicoes = []
+            letras = []
+            cont = 0
+            for letra in palavra:
+                if forca().validarLetra(escolha, letra) and letra != "-":
+                    posicoes.append(cont)
+                    letras.append(letra)
+                cont += 1
+
+            campo = list(campo)
+            cont = 0
+            for posicao in posicoes:
+                campo[posicao] = letras[cont]
+                cont += 1
+            campo = "".join(campo)
+
+            session['chute'] = 'acertou'      
+            session['campo'] = campo
+            
+            if not "_" in campo:
+                session['fim'] = True
+                session['partida'] = 'ganhou'
+                
+            else:
+                return session
+                
+        else:
+            session['erros'] += 1
+            session['chute'] = 'errou'
+            session['campo'] = campo
+            
+            if session['erros'] >= 6:
+                session['fim'] = True
+                
+                session['partida'] = 'perdeu'
+                return session    
+                    
+            else:
+                return session
+            
+    def jogarCompetitivo (self, escolha):
         campo = session['campo']
         palavra = session['palavra']
 

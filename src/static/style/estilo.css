@@ -6,13 +6,19 @@
     height: 100vh;
     margin: 0;
     background-image: url('/static/image/background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center  hgnb ;
 }
 
 .conteiner{
     position: relative;
-    margin: auto 50px auto auto;
+    margin: auto;
     display: flex;
-    background-color: #ebabfc8f;
+    background-color: transparent;
+    border-radius: 10px;
+    backdrop-filter: blur(15px);
+    border: solid rgb(224, 224, 224) 1px;
 }
 
 .resultado{
@@ -21,7 +27,7 @@
 
 .jogo{
     position: relative;
-    margin: auto 50px auto auto;
+    margin: auto 5px auto auto;
     display: flex;
     height: 500px;
     width: 800px;
@@ -35,8 +41,14 @@
     color: #fffbfb;
     margin-top: 50px;
 }
+
+#meuFormulario{
+    display: flex;
+    justify-content: space-between;
+}
+
 label{
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 600;
 }
 
@@ -51,11 +63,11 @@ select {
     border-radius: 5px;
     font-size: 20px;
     width: 180px;
+    height: 50px;
     outline: none;
     cursor: pointer;
     color: #fff; /* Cor do texto */
 }
-
 
 select:focus {
     border-color: #b700ff;
@@ -65,10 +77,6 @@ select:focus {
     outline: none; /* Remove a borda de foco padrão */
 }
 
-.select-container select::selection {
-    background-color: #ff6600; /* Cor de fundo do item selecionado */
-    color: #fff; /* Cor do texto do item selecionado */
-}
 
 select::before {
     content: "\25BC";
@@ -80,6 +88,65 @@ select::before {
     color: #666;
 }
 
+.historico{
+    text-align: left;
+    display: none;
+    margin-top: -51px;
+}
+
+.cronometro{
+    display: none;
+    border: solid #ffffff 3px;
+    background-color: #333;
+    border-radius: 10px;
+    width: 50px;
+    height: 45px;
+    margin-left: 100px;
+}
+
+.cronometro span{
+    position: relative;
+    text-align: center;
+    margin: 14px 0;
+    display: inline-block;
+    font-weight: 600;
+}
+
+.button-box {
+	width: 280px;
+	margin: auto;
+	position: relative;
+	border-radius: 30px;
+	background: #fff;
+    height: 50px;
+}
+
+.toggle-btn {
+    padding: 13px 15px;
+	cursor: pointer;
+	background: transparent;
+	border: 0;
+	outline: none;
+	position: relative;
+	text-align: center;
+    font-size: 20px;
+    transition: .5s;
+}
+
+#btn {
+	left: 0;
+	top: 0;
+	position: absolute;
+	width: 140px;
+	height: 100%;
+	background: #333;
+	border-radius: 30px;
+	transition: .5s;
+}
+
+#btn1{
+    color: #ffffff;
+}
 
 .formTeclado {
     margin: auto auto 20px;
@@ -87,6 +154,11 @@ select::before {
     color: rgb(241, 218, 255);
     text-align: left;
     width: 100%;
+}
+
+.dicaCampo{
+    width: max-content;
+    margin: auto;
 }
 
 .conteiner #message{
@@ -101,6 +173,7 @@ select::before {
     max-width: 600px;
     margin: auto;
 }
+
 .primeiraLinha{
     display: grid;
     grid-template-columns: repeat(10, 1fr);
@@ -127,18 +200,27 @@ select::before {
 
 .numerica {
     display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+    max-width: 600px;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.linhaNumerica{
+    display: grid;
     grid-template-columns: repeat(10, 1fr);
     gap: 10px;
     max-width: 600px;
-    margin-top: 10px;
-    margin: 10px auto;
+    margin: auto;
 }
+
 .tecla {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50px;
-    height: 50px;
+    width: 46px;
+    height: 46px;
     background-color: #1f1f1f;
     border: 1px solid #c9c6c6;
     font-size: 18px;
@@ -148,6 +230,7 @@ select::before {
     border-radius: 5px;
     color:#fffbfb ;
 }
+
 .tecla:hover:not(.acertou, .errou) {
     background-color: #a5a3a3;
 }
@@ -156,15 +239,16 @@ select::before {
     background-color: green;
     color: white;
     cursor: default;
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
     opacity: 80%;
 }
+
 .errou {
     background-color: rgb(255, 0, 0);
     color: white;
     cursor: default;
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
     opacity: 80%;
 }

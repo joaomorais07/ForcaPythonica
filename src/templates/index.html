@@ -21,11 +21,11 @@
         </div>
         <div class="jogo">
             <div class="informacao">
-                <div>
-                    <form method="post" action="/" id="meuFormulario">
-                        <label for="opcao">Escolha o tema:</label>
-                        <select id="opcao" name="opcao" data-opcao="{{ opcaoSelecionada }}" >
-                            <option class="teste" value="Aleatorio">Aleatorio 🎲</option>
+                <form method="post" action="/" id="meuFormulario">
+                    <div class="tema">
+                        <label for="opcao">Tema:</label>
+                        <select id="opcao" name="opcao" data-opcao="{{ opcaoSelecionada }}">
+                            <option value="Aleatorio">Aleatório 🎲</option>
                             <option value="Animal">Animal 🐍</option>
                             <option value="Cidade">Cidade 🌆</option>
                             <option value="Filme">Filme 🎥</option>
@@ -35,27 +35,47 @@
                             <option value="Profissão">Profissão 👨‍⚕️</option>
                             <option value="País">País 🌍</option>
                         </select>
-                    </form>
+                    </div>
+                    <div class="historico">
+                        <h3>Record: 4.652</h3>
+                        <h3>Ultima Pontuação: 1200</h3>
+                    </div>
+                    <div class="cronometro">
+                        <span id="minutos">01</span>:<span id="segundos">00</span>
+                    </div>
+
+                    <div class="modo" style="display: inline-flex;">
+                        <div class="form-box">
+                            <div class="button-box">
+                                <div id="btn"></div>
+                                <button id="btn1" type="button" class="toggle-btn" onclick="leftClick()" value="sem">Sem Classe</button>
+                                <button id="btn2" type="button" class="toggle-btn" onclick="rightClick()" value="competitivo">Competitivo</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+                <div class="dicaCampo">
+                    <h2 id="dica" style="display: none">Dica: {{ dica }}</h2>
+
+                    <h1 id="message">{{ campo }}</h1>
                 </div>
-                <h2 id="dica" style="display: none">Dica: {{ dica }}</h2>
-
-                <h1 id="message">{{ campo }}</h1>
             </div>
-
-
 
             <form method="post" action="/" class="formTeclado">
                 <div class="numerica">
-                    <button class="tecla" type="button" name="tecla" value="1">1</button>
-                    <button class="tecla" type="button" name="tecla" value="2">2</button>
-                    <button class="tecla" type="button" name="tecla" value="3">3</button>
-                    <button class="tecla" type="button" name="tecla" value="4">4</button>
-                    <button class="tecla" type="button" name="tecla" value="5">5</button>
-                    <button class="tecla" type="button" name="tecla" value="6">6</button>
-                    <button class="tecla" type="button" name="tecla" value="7">7</button>
-                    <button class="tecla" type="button" name="tecla" value="8">8</button>
-                    <button class="tecla" type="button" name="tecla" value="9">9</button>
-                    <button class="tecla" type="button" name="tecla" value="0">0</button>
+                    <div class="linhaNumerica">
+                        <button class="tecla" type="button" name="tecla" value="1">1</button>
+                        <button class="tecla" type="button" name="tecla" value="2">2</button>
+                        <button class="tecla" type="button" name="tecla" value="3">3</button>
+                        <button class="tecla" type="button" name="tecla" value="4">4</button>
+                        <button class="tecla" type="button" name="tecla" value="5">5</button>
+                        <button class="tecla" type="button" name="tecla" value="6">6</button>
+                        <button class="tecla" type="button" name="tecla" value="7">7</button>
+                        <button class="tecla" type="button" name="tecla" value="8">8</button>
+                        <button class="tecla" type="button" name="tecla" value="9">9</button>
+                        <button class="tecla" type="button" name="tecla" value="0">0</button>
+                    </div>
                 </div>
 
                 <div class="alfabetica">
@@ -95,6 +115,8 @@
             </form>
         </div>
     </div>
+    
+
 </body>
 
 </html>
