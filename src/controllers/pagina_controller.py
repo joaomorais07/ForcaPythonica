@@ -1,34 +1,37 @@
 ﻿from flask.views import MethodView
 from flask import render_template, request, jsonify, session
-from src.controllers.jogo_controller import forca
+from src.controllers.jogo_controller import Forca
+
 
 class carregarJogo(MethodView):
-    def get (self):
-        forca().sortearPalavra('Aleatorio')
+    def get(self):
+        Forca().sortear_palavra('Aleatorio')
         dica = session['dica']
         campo = session['campo']
         opcaoSelecionada = 'Aleatorio'
         erros = str(session['erros'])
         session['competitivo'] = False
         return render_template('index.html', campo=campo, dica=dica, opcaoSelecionada=opcaoSelecionada, erros=erros)
-    
-    def post (self):
+
+    def post(self):
         opcaoSelecionada = request.form['opcao']
-        if not opcaoSelecionada: 
+        print(f"Opção selecionada: {opcaoSelecionada}")
+        if not opcaoSelecionada:
             opcaoSelecionada = 'Aleatorio'
-        forca().sortearPalavra(opcaoSelecionada)
+        Forca().sortear_palavra(opcaoSelecionada)
         dica = session['dica']
         campo = session['campo']
         erros = str(session['erros'])
         return render_template('index.html', campo=campo, dica=dica, opcaoSelecionada=opcaoSelecionada, erros=erros)
-     
-    
+
+
 class escolher (MethodView):
     def get(self):
         escolha = request.args.get('tecla')
-        if session['competitivo'] == False:
-            forca().jogar(escolha)
+        if not session.get('competitivo', False):
+            Forca().jogar(escolha)
         else:
-            forca().jogarCompetitivo(escolha)
-        resposta = session['campo'], session['chute'], session['partida'], session['palavra'], str(session['erros'])
+            Forca().jogar_competitivo(escolha)
+        resposta = session['campo'], session['chute'], session['partida'], session['palavra'], str(
+            session['erros'])
         return jsonify({'message': resposta})

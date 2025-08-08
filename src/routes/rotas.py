@@ -1,7 +1,7 @@
-﻿from src.controllers.pagina_controller import *
-from src.controllers.rota_controller import *
-from src.controllers.jogo_controller import *
+﻿from flask import Blueprint
+from src.controllers.pagina_controller import carregarJogo, escolher
 
-app.add_url_rule('/', view_func=carregarJogo.as_view('jogo'))
-app.add_url_rule('/listarRotas', view_func=listarRotas.as_view('listar_rotas'))
-app.add_url_rule('/escolher', view_func=escolher.as_view('escolher'))
+bp = Blueprint('main', __name__)
+
+bp.add_url_rule('/', view_func=carregarJogo.as_view('jogo'))
+bp.add_url_rule('/escolher', view_func=escolher.as_view('escolher'))

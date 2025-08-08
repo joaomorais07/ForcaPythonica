@@ -1,21 +1,26 @@
-﻿from flask import Flask, session
+# src/app_factory.py
+import os
+from flask import Flask
 from flask_cors import CORS
-import secrets
-from pathlib import Path
+from src.config import config_dict
+from src.routes.rotas import bp
 
-app = Flask(__name__)
 
-from src.routes.rotas import *
-    
-SECRET_FILE_PATH = Path(".flask_secret")
+def create_app():
+    app = Flask(
+        __name__,
+        static_folder=os.path.join(os.path.dirname(__file__), 'static'),
+        template_folder=os.path.join(os.path.dirname(__file__), 'templates')
+    )
 
-try:
-    with SECRET_FILE_PATH.open("r") as secret_file:
-        app.secret_key = secret_file.read()
-except FileNotFoundError:
-    with SECRET_FILE_PATH.open("w") as secret_file:
-        app.secret_key = secrets.token_hex(32)
-        secret_file.write(app.secret_key)
-    
-cors = CORS(app)
-app.config['CORS_HEADERS'] = 'Content-Type'
+    # Configurações
+    env = os.getenv('FLASK_ENV', 'development')
+    app.config.from_object(config_dict[env])
+
+    # CORS
+    CORS(app, origins='*', headers=app.config['CORS_HEADERS'])
+
+    # Registro de rotas
+    app.register_blueprint(bp)
+
+    return app

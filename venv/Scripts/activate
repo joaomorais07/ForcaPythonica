@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\Joaom\Area de Trabalho\Meus Scripts\Forca\venv"
+VIRTUAL_ENV="C:\Users\Joaom\OneDrive\Área de Trabalho\Meus Scripts\Forca\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
